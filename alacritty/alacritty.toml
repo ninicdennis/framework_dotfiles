@@ -1,0 +1,18 @@
+
+general.import = [
+  "~/.config/alacritty/catppuccin-mocha.toml"
+]
+
+[terminal]
+shell = { program = "/bin/zsh", args = ["-c", "~/.config/alacritty/tmux-launch.zsh"] }
+
+[env]
+term = "alacritty"
+
+[font]
+normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
+bold = { family = "JetBrainsMono Nerd Font", style = "Bold" }
+italic = { family = "JetBrainsMono Nerd Font", style = "Italic" }
+bold_italic = { family = "JetBrainsMono Nerd Font", style = "Bold Italic" }
+size = 10
+
