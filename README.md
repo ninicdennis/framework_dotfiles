@@ -23,11 +23,9 @@ Additional optional dependencies may be required by plugins in the Neovim config
 Clone this repository somewhere on your machine and run the `stow.sh` script:
 
 ```bash
-git clone <this-repo-url>
+git clone [YOUR_REPO_URL]
 cd framework_dotfiles
 ./stow.sh
-```
-
 This will create symlinks in your `$HOME` directory pointing to the configuration files in this repository. By default the script stows each directory into `~/.config/<name>` (for example `nvim`, `alacritty`, `hypr`, `waybar`) and also places the `tmux` and `zsh` files directly in your home directory.
 
 If you want to undo the links created by GNU Stow, you can run the same command with the `-D` flag, e.g. `stow -D nvim`.
