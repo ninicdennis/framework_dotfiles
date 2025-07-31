@@ -103,9 +103,16 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# Aliases
 alias ff="fastfetch"
+alias networktui="nmtui"
+alias bluetoothtui="bluetui"
 
+# Terminal
 export TERM="screen-256color"
+
+# Screenshots
 export HYPRSHOT_DIR="$HOME/Pictures/Screenshots"
 
+# Starship
 eval "$(starship init zsh)"
