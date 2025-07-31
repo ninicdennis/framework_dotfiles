@@ -20,6 +20,10 @@ mkdir -p ~/.config/waybar
 
 stow --target="$HOME/.config/waybar" waybar
 
+mkdir -p ~/.config/wofi
+
+stow --target="$HOME/.config/wofi" wofi
+
 stow tmux
 
 stow zsh
