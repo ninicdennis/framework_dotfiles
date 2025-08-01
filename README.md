@@ -15,6 +15,16 @@ Install the following packages with `pacman` (or your favourite AUR helper) befo
 - `hyprland`
 - `waybar`
 - `ttf-jetbrains-mono-nerd`
+- `wofi`
+- `mako`
+- `hyprpaper`
+- `hypridle`
+- `hyprlock`
+- `hyprshot`
+- `brightnessctl`
+- `foot`
+- `pulsemixer`
+- `htop`
 
 Additional optional dependencies may be required by plugins in the Neovim configuration. Check the plugin list for details.
 
