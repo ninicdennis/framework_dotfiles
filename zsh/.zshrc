@@ -107,6 +107,7 @@ source $ZSH/oh-my-zsh.sh
 alias ff="fastfetch"
 alias networktui="nmtui"
 alias bluetoothtui="bluetui"
+alias dots="cd ~/dotfiles"
 
 # Terminal
 export TERM="screen-256color"
