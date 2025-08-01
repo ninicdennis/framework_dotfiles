@@ -2,7 +2,7 @@
 
 * {
     border: none;
-    border-radius: 1px;
+    border-radius: 4px;
     font-family: JetBrainsMono Nerd Font, Font Awesome;
     font-size: 13px;
     min-height: 0;
@@ -29,7 +29,8 @@ tooltip label {
 button {
     box-shadow: inset 0 -3px transparent;
     border: none;
-    border-radius: 1px;
+    border-radius: 4px;
+    margin: 5px 1px;
 }
 
 button:hover {
@@ -82,6 +83,7 @@ button:hover {
 #idle_inhibitor,
 #scratchpad,
 #mode,
+#battery,
 #tray {
     padding: 0 10px;
     margin: 5px 1px;
@@ -180,6 +182,12 @@ label:focus {
     background-color: red;
     color: @mantle;
     min-width: 37px;
+}
+
+#battery {
+  background-color: @sapphire;
+  color: @mantle;
+  min-width: 37px;
 }
 
 #mpris {
