@@ -107,7 +107,12 @@ source $ZSH/oh-my-zsh.sh
 alias ff="fastfetch"
 alias networktui="nmtui"
 alias bluetoothtui="bluetui"
+
+# Location Aliases
 alias dots="cd ~/dotfiles"
+alias conf="cd ~/.config"
+
+# Update Aliases
 alias pacup="sudo pacman -Syu"
 alias yayup="yay -Syu"
 
