@@ -24,6 +24,8 @@ mkdir -p ~/.config/wofi
 
 stow --target="$HOME/.config/wofi" wofi
 
+stow --target="$HOME/.config" starship
+
 stow tmux
 
 stow zsh
