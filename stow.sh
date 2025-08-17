@@ -2,6 +2,11 @@
 
 set -e
 
+if ! command -v stow >/dev/null 2>&1; then
+  echo "Error: GNU Stow (stow) is not installed." >&2
+  exit 1
+fi
+
 # Create the target directory if it doesn't exist
 mkdir -p ~/.config/nvim
 
