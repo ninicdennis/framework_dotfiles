@@ -31,6 +31,12 @@ stow --target="$HOME/.config/wofi" wofi
 
 stow --target="$HOME/.config" starship
 
+mkdir -p ~/.config/htop
+
+stow --target="$HOME/.config/htop" htop
+
 stow tmux
 
 stow zsh
+
+echo "All dotfiles have been stowed successfully."
