@@ -4,37 +4,32 @@ A personal collection of configuration files for my Framework 13 laptop running 
 
 ## Dependencies
 
-Install the following packages with `pacman` (or your favourite AUR helper) before applying these dotfiles:
+The following packages are required:
 
-- `git`
-- `stow`
-- `neovim`
-- `zsh`
-- `tmux`
-- `alacritty`
-- `hyprland`
-- `waybar`
+- `git`, `stow`
+- `neovim`, `zsh`, `tmux`, `alacritty`
+- `hyprland`, `waybar`, `hyprpaper`, `hypridle`, `hyprlock`, `hyprshot`
+- `wofi`, `mako`
+- `brightnessctl`, `foot`, `pulsemixer`, `htop`
 - `ttf-jetbrains-mono-nerd`
-- `wofi`
-- `mako`
-- `hyprpaper`
-- `hypridle`
-- `hyprlock`
-- `hyprshot`
-- `brightnessctl`
-- `foot`
-- `pulsemixer`
-- `htop`
+- `starship`, `fastfetch`
+- `oh-my-zsh` (installed automatically by the install script)
 
 Additional optional dependencies may be required by plugins in the Neovim configuration. Check the plugin list for details.
 
 ## Installation on Arch Linux
 
-Clone this repository somewhere on your machine and run the `stow.sh` script:
+Clone this repository and install dependencies:
 
 ```bash
-git clone [YOUR_REPO_URL]
+git clone https://github.com/ninicdennis/framework_dotfiles.git
 cd framework_dotfiles
+./install-deps.sh
+```
+
+Then apply the dotfiles with:
+
+```bash
 ./stow.sh
 ```
 
@@ -45,4 +40,3 @@ If you want to undo the links created by GNU Stow, you can run the same command 
 ## What does `stow.sh` do?
 
 `stow.sh` simply calls GNU Stow for each subdirectory in this repository. It also ensures that each target directory (e.g. `~/.config/nvim`) exists before stowing. Running the script once will set up the entire environment by symlinking all provided configurations to their expected locations.
-
