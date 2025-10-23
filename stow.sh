@@ -7,36 +7,19 @@ if ! command -v stow >/dev/null 2>&1; then
   exit 1
 fi
 
-# Create the target directory if it doesn't exist
-mkdir -p ~/.config/nvim
+# Config packages that need their own directory
+config_packages=(nvim alacritty hypr waybar wofi htop)
 
-# Stow the contents into ~/.config/nvim
-stow --target="$HOME/.config/nvim" nvim
+for package in "${config_packages[@]}"; do
+  mkdir -p "$HOME/.config/$package"
+  stow --target="$HOME/.config/$package" "$package"
+done
 
-mkdir -p ~/.config/alacritty
-
-stow --target="$HOME/.config/alacritty" alacritty
-
-mkdir -p ~/.config/hypr
-
-stow --target="$HOME/.config/hypr" hypr
-
-mkdir -p ~/.config/waybar
-
-stow --target="$HOME/.config/waybar" waybar
-
-mkdir -p ~/.config/wofi
-
-stow --target="$HOME/.config/wofi" wofi
-
+# Starship goes to .config directly
 stow --target="$HOME/.config" starship
 
-mkdir -p ~/.config/htop
-
-stow --target="$HOME/.config/htop" htop
-
+# Home directory packages
 stow tmux
-
 stow zsh
 
 echo "All dotfiles have been stowed successfully."
