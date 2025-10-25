@@ -136,7 +136,3 @@ esac
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/home/doggobot/.lmstudio/bin"
 # End of LM Studio CLI section
-
-if ! pgrep -u "$USER" ssh-agent >/dev/null; then
-  eval "$(ssh-agent -s)" > /dev/null
-fi
