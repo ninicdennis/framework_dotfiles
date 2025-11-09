@@ -228,3 +228,26 @@ label:focus {
 #scratchpad.empty {
   background-color: transparent;
 }
+
+/* Base */
+#custom-powerprofile {
+  padding: 0 8px;
+  border-radius: 8px;
+}
+
+/* Profile-specific classes set by script’s JSON */
+#custom-powerprofile.performance {
+  color: #e78284; /* red-ish */
+}
+
+#custom-powerprofile.balanced {
+  color: #8caaee; /* blue-ish */
+}
+
+#custom-powerprofile.power-saver {
+  color: #a6d189; /* green-ish */
+}
+
+#custom-powerprofile.unknown {
+  color: #e5c890;
+}

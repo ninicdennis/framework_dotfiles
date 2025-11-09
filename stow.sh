@@ -22,4 +22,7 @@ stow --target="$HOME/.config" starship
 stow tmux
 stow zsh
 
+stow  --target="$HOME/.local" local
+
+
 echo "All dotfiles have been stowed successfully."

@@ -1,0 +1,202 @@
+#!/usr/bin/env bash
+# ~/.local/bin/powerprofile
+# Waybar custom module + controller for power-profiles-daemon (PPD)
+# - --print : outputs JSON for Waybar
+# - --cycle : cycles power-saver -> balanced -> performance
+# - --set X : sets profile to X (power-saver|balanced|performance)
+# Requires: power-profiles-daemon, libnotify (mako reads notify-send)
+
+set -euo pipefail
+
+have() { command -v "$1" >/dev/null 2>&1; }
+
+# ---------- NOTIFY ----------
+notify() {
+  local msg="${1:-}"
+  have notify-send && notify-send -a "Power Profile" "Profile: ${msg}"
+}
+
+# ---------- ACTIVE PROFILE DETECTION ----------
+# Returns: balanced | performance | power-saver | unknown
+get_active() {
+  if have powerprofilesctl; then
+    # Preferred stable interface
+    if out="$(powerprofilesctl get 2>/dev/null || true)"; then
+      case "$out" in
+      balanced | performance | power-saver)
+        printf '%s\n' "$out"
+        return 0
+        ;;
+      esac
+    fi
+
+    # Fallback: parse list/active marker
+    if out="$(powerprofilesctl 2>/dev/null || true)"; then
+      # Try to find "Active: <profile>" or asterisk marker
+      active="$(printf '%s\n' "$out" | awk -F: '/Active/ {gsub(/^[ \t]+/, "", $2); print $2}' | head -n1)"
+      case "$active" in
+      balanced | performance | power-saver)
+        printf '%s\n' "$active"
+        return 0
+        ;;
+      esac
+      # Some versions mark active with "*"
+      active="$(printf '%s\n' "$out" | awk '/\*/{print $2}' | head -n1)"
+      case "$active" in
+      balanced | performance | power-saver)
+        printf '%s\n' "$active"
+        return 0
+        ;;
+      esac
+    fi
+  fi
+
+  # Last resort: infer from CPU EPP
+  local eppf epp
+  eppf="/sys/devices/system/cpu/cpu0/cpufreq/energy_performance_preference"
+  if [[ -r "$eppf" ]]; then
+    epp="$(cat "$eppf")"
+    case "$epp" in
+    power | balance_power)
+      printf 'power-saver\n'
+      return 0
+      ;;
+    balance_performance)
+      printf 'balanced\n'
+      return 0
+      ;;
+    performance)
+      printf 'performance\n'
+      return 0
+      ;;
+    esac
+  fi
+
+  printf 'unknown\n'
+}
+
+# ---------- JSON FOR WAYBAR ----------
+print_json() {
+  local active icon cls label
+  active="$(get_active)"
+
+  case "$active" in
+  performance)
+    icon=""
+    cls="performance"
+    label="performance"
+    ;;
+  balanced)
+    icon=""
+    cls="balanced"
+    label="balanced"
+    ;;
+  power-saver)
+    icon=""
+    cls="power-saver"
+    label="power-saver"
+    ;;
+  *)
+    icon=""
+    cls="unknown"
+    label="$active"
+    ;;
+  esac
+
+  # One-line JSON (Waybar expects a single object per refresh)
+  printf '{"text":"%s %s","tooltip":"Power profile: %s","class":"%s"}\n' \
+    "$icon" "$label" "$label" "$cls"
+}
+
+# ---------- SET PROFILE ----------
+_map_profile_to_epp() {
+  case "$1" in
+  power-saver) printf 'power' ;;
+  balanced) printf 'balance_performance' ;;
+  performance) printf 'performance' ;;
+  *) printf '' ;;
+  esac
+}
+
+_try_runner() {
+  # Prefer sudo -n if available & allowed, else doas -n
+  if have sudo && sudo -n true 2>/dev/null; then
+    printf 'sudo -n'
+  elif have doas && doas -n true 2>/dev/null; then
+    printf 'doas -n'
+  else
+    printf ''
+  fi
+}
+
+_set_epp_all_cores() {
+  # Writes EPP across CPUs using sudo/doas if possible; silently skips if not.
+  local epp="$1" runner f
+  runner="$(_try_runner)"
+  for f in /sys/devices/system/cpu/cpu*/cpufreq/energy_performance_preference; do
+    [[ -e "$f" ]] || continue
+    if [[ -w "$f" ]]; then
+      echo "$epp" >"$f" || true
+    elif [[ -n "$runner" ]]; then
+      $runner sh -c "echo '$epp' > '$f'" || true
+    fi
+  done
+}
+
+set_profile() {
+  local target="${1:-balanced}"
+
+  case "$target" in
+  balanced | performance | power-saver) ;;
+  *)
+    echo "Invalid profile: $target" >&2
+    exit 2
+    ;;
+  esac
+
+  if have powerprofilesctl; then
+    if powerprofilesctl set "$target" 2>/dev/null; then
+      notify "$target"
+      return 0
+    fi
+  fi
+
+  # Fallback to EPP write (may need sudo/doas NOPASSWD for non-interactive)
+  local epp
+  epp="$(_map_profile_to_epp "$target")"
+  if [[ -n "$epp" ]]; then
+    _set_epp_all_cores "$epp"
+    notify "$target"
+    return 0
+  fi
+
+  notify "failed: $target"
+  exit 1
+}
+
+cycle_profile() {
+  case "$(get_active)" in
+  power-saver) set_profile balanced ;;
+  balanced) set_profile performance ;;
+  performance) set_profile power-saver ;;
+  *) set_profile balanced ;;
+  esac
+}
+
+usage() {
+  cat >&2 <<'EOF'
+Usage: powerprofile [--print|--cycle|--set <balanced|performance|power-saver>]
+  --print   : Emit Waybar JSON (text, tooltip, class)
+  --cycle   : Cycle power-saver -> balanced -> performance
+  --set X   : Set profile to X
+EOF
+  exit 2
+}
+
+# ---------- MAIN ----------
+case "${1-}" in
+--print | "") print_json ;;
+--cycle) cycle_profile ;;
+--set) set_profile "${2-}" ;;
+*) usage ;;
+esac

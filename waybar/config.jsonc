@@ -5,10 +5,16 @@
   "height": 30,
   "width": 1440,
   "spacing": 1,
-  "modules-left": ["hyprland/workspaces", "battery", "cpu", "memory"],
+  "modules-left": [
+    "hyprland/workspaces",
+    "custom/powerprofile",
+    "battery",
+    "cpu",
+    "memory"
+  ],
   "modules-center": [
     // "hyprland/window",
-    "clock",
+    "clock"
   ],
   "modules-right": ["custom/kernel", "disk#ssd", "network", "pulseaudio"],
   "hyprland/workspaces": {
@@ -16,19 +22,19 @@
     "active-only": false, // show inactive too
     "all-outputs": true, // same slots on every monitor
     "persistent-workspaces": {
-      "*": [1, 2, 3, 4, 5], // reserve workspaces 1–5 everywhere
-    },
+      "*": [1, 2, 3, 4, 5] // reserve workspaces 1–5 everywhere
+    }
   },
   "battery": {
     "interval": 5,
     "states": {
       "warning": 30,
-      "critical": 15,
+      "critical": 15
     },
     "format": "{capacity}% {icon}",
     "format-charging": " {icon} {capacity}% ",
     "format-icons": ["", "", "", "", ""],
-    "max-length": 25,
+    "max-length": 25
   },
   "bluetooth": {
     "format-on": "bt ",
@@ -39,10 +45,20 @@
     "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
     "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
     "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-    "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
+    "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
   },
   "hyprland/submap": {
-    "format": "<span style=\"italic\">{}</span>",
+    "format": "<span style=\"italic\">{}</span>"
+  },
+  "custom/powerprofile": {
+    "exec": "~/.local/bin/powerprofile --print",
+    "return-type": "json",
+    "interval": 5,
+    "on-click": "~/.local/bin/powerprofile --cycle",
+    "on-click-right": "~/.local/bin/powerprofile --set balanced",
+    "on-scroll-up": "~/.local/bin/powerprofile --set performance",
+    "on-scroll-down": "~/.local/bin/powerprofile --set power-saver",
+    "tooltip": true
   },
   "mpris": {
     "interval": 15,
@@ -53,22 +69,22 @@
       "default": "▶",
       "firefox": "▶",
       "tidal-hifi": "🎵",
-      "cmus": "🎵",
+      "cmus": "🎵"
     },
     "status-icons": {
-      "paused": "⏸",
-    },
+      "paused": "⏸"
+    }
   },
   "idle_inhibitor": {
     "format": "{icon}",
     "format-icons": {
       "activated": "",
-      "deactivated": "",
-    },
+      "deactivated": ""
+    }
   },
   "tray": {
     "icon-size": 13,
-    "spacing": 10,
+    "spacing": 10
   },
   "clock": {
     "interval": 60,
@@ -86,21 +102,21 @@
         "days": "<span color='#cdd6f4'><b>{}</b></span>",
         "weeks": "<span color='#94e2d5'>W{}</span>",
         "weekdays": "<span color='#f9e2af'><b>{}</b></span>",
-        "today": "<span color='#f5e0dc'><b><u>{}</u></b></span>",
-      },
+        "today": "<span color='#f5e0dc'><b><u>{}</u></b></span>"
+      }
     },
     "actions": {
       "on-click-right": "mode",
       "on-click-forward": "tz_up",
       "on-click-backward": "tz_down",
       "on-scroll-up": "shift_up",
-      "on-scroll-down": "shift_down",
-    },
+      "on-scroll-down": "shift_down"
+    }
   },
   "cpu": {
     "interval": 3,
     "format": "{usage}% ",
-    "on-click": "foot --app-id htop htop",
+    "on-click": "foot --app-id htop htop"
   },
   "memory": {
     "interval": 3,
@@ -108,8 +124,8 @@
     "on-click": "foot --app-id htop htop",
     "tooltip-format": "Used: {used:0.1f}G/{total:0.1f}G. Swap: {swapUsed:0.1f}G/{swapTotal:0.1f}G",
     "states": {
-      "critical": 80,
-    },
+      "critical": 80
+    }
   },
   "disk#ssd": {
     "interval": 60,
@@ -117,7 +133,7 @@
     "path": "/",
     "tooltip": true,
     "warning": 80,
-    "critical": 90,
+    "critical": 90
   },
   "network": {
     "interval": 60,
@@ -128,11 +144,11 @@
     "tooltip-format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
     "tooltip-format-wifi": "{ifname}: {ipaddr}/{cidr} ",
     "format-linked": "(No IP) ",
-    "format-disconnected": "Disconnected ⚠",
+    "format-disconnected": "Disconnected ⚠"
   },
   "custom/kernel": {
     "exec": "uname -r | sed -E 's/^([0-9]+\\.[0-9]+\\.[0-9]+)-.*-([a-zA-Z0-9]+)/\\1-\\2/'",
-    "format": "{} ",
+    "format": "{} "
   },
   "pulseaudio": {
     "scroll-step": 2,
@@ -148,8 +164,8 @@
       "headset": "",
       "phone": "",
       "portable": "",
-      "car": "",
+      "car": ""
     },
-    "on-click": "foot --app-id pulsemixer pulsemixer",
-  },
+    "on-click": "foot --app-id pulsemixer pulsemixer"
+  }
 }
