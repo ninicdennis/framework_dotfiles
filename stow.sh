@@ -24,5 +24,9 @@ stow zsh
 
 stow  --target="$HOME/.local" local
 
+# VS Code configuration - this one has a specific name
+mkdir -p "$HOME/.config/Code"Code
+stow --target="$HOME/.config/Code" vscode
+
 
 echo "All dotfiles have been stowed successfully."

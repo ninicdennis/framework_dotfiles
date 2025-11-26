@@ -14,6 +14,7 @@ The following packages are required:
 - `ttf-jetbrains-mono-nerd`
 - `starship`, `fastfetch`
 - `oh-my-zsh` (installed automatically by the install script)
+- `visual-studio-code-bin` (optional, for VS Code configuration)
 
 Additional optional dependencies may be required by plugins in the Neovim configuration. Check the plugin list for details.
 
@@ -36,6 +37,26 @@ Then apply the dotfiles with:
 This will create symlinks in your `$HOME` directory pointing to the configuration files in this repository. By default the script stows each directory into `~/.config/<name>` (for example `nvim`, `alacritty`, `hypr`, `waybar`) and also places the `tmux` and `zsh` files directly in your home directory.
 
 If you want to undo the links created by GNU Stow, you can run the same command with the `-D` flag, e.g. `stow -D nvim`.
+
+## VS Code Configuration
+
+The VS Code configuration includes:
+- `settings.json` - Editor settings
+- `snippets/` - Custom code snippets
+- `extensions.txt` - List of installed extensions
+
+To restore your VS Code extensions after stowing, run:
+
+```bash
+cd ~/.config/Code/User
+./install-extensions.sh
+```
+
+To update the extensions list after installing new extensions:
+
+```bash
+code --list-extensions > ~/.config/Code/User/extensions.txt
+```
 
 ## What does `stow.sh` do?
 

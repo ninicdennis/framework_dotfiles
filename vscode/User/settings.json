@@ -1,0 +1,31 @@
+{
+  "window.zoomLevel": 3,
+  "github.copilot.nextEditSuggestions.enabled": true,
+  "workbench.colorTheme": "Catppuccin Mocha",
+  "workbench.iconTheme": "catppuccin-mocha",
+  "gitlens.ai.model": "vscode",
+  "gitlens.ai.vscode.model": "copilot:gpt-4.1",
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.fontFamily": "'JetBrainsMono Nerd Font', 'monospace', monospace",
+  "git.confirmSync": false,
+  "git.enableSmartCommit": true,
+  "github.copilot.chat.newWorkspace.useContext7": true,
+  "chat.editing.confirmEditRequestRemoval": false,
+  "chat.tools.terminal.autoApprove": {
+    "pnpm test:coverage": {
+      "approve": true,
+      "matchCommandLine": true
+    },
+    "pnpm test": {
+      "approve": true,
+      "matchCommandLine": true
+    },
+    "npm test": true,
+    "pnpm": true,
+    "npx": true,
+    "docker compose": true
+  },
+  "chat.agent.maxRequests": 50,
+  "workbench.settings.applyToAllProfiles": []
+}
