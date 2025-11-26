@@ -136,3 +136,7 @@ esac
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/home/doggobot/.lmstudio/bin"
 # End of LM Studio CLI section
+export PATH="$HOME/.local/bin:$PATH"
+
+# opencode
+export PATH=/home/doggobot/.opencode/bin:$PATH

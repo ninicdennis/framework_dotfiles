@@ -8,7 +8,7 @@ if ! command -v stow >/dev/null 2>&1; then
 fi
 
 # Config packages that need their own directory
-config_packages=(nvim alacritty hypr waybar wofi htop)
+config_packages=(nvim alacritty hypr waybar wofi htop opencode)
 
 for package in "${config_packages[@]}"; do
   mkdir -p "$HOME/.config/$package"
