@@ -16,7 +16,13 @@
     // "hyprland/window",
     "clock"
   ],
-  "modules-right": ["custom/kernel", "disk#ssd", "network", "pulseaudio"],
+  "modules-right": [
+    "custom/kernel",
+    "disk#ssd",
+    "network",
+    "custom/tailscale",
+    "pulseaudio"
+  ],
   "hyprland/workspaces": {
     "format": "{id}",
     "active-only": false, // show inactive too
@@ -167,5 +173,13 @@
       "car": ""
     },
     "on-click": "foot --app-id pulsemixer pulsemixer"
+  },
+  "custom/tailscale": {
+    "exec": "tailscale status --json 2>/dev/null | jq -r 'if .BackendState == \"Running\" then \"󰛳\" else \"\" end'",
+    "return-type": "",
+    "interval": 5,
+    "tooltip-format": "Tailscale: {}",
+    "exec-tooltip": "tailscale status --json 2>/dev/null | jq -r 'if .BackendState == \"Running\" then \"Connected\" else \"Disconnected\" end'",
+    "on-click": "~/.config/hypr/scripts/tailscale-toggle.sh"
   }
 }
