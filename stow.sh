@@ -25,7 +25,7 @@ stow zsh
 stow  --target="$HOME/.local" local
 
 # VS Code configuration - this one has a specific name
-mkdir -p "$HOME/.config/Code"Code
+mkdir -p "$HOME/.config/Code"
 stow --target="$HOME/.config/Code" vscode
 
 

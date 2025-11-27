@@ -6,6 +6,9 @@
       "enabled": true
     }
   },
+  "keybinds": {
+    "command_list": "ctrl+alt+p"
+  },
   "mcp": {
     "context7": {
       "type": "remote",
