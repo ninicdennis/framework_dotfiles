@@ -7,7 +7,8 @@
     }
   },
   "keybinds": {
-    "command_list": "ctrl+alt+p"
+    "command_list": "ctrl+alt+p",
+    "input_newline": "alt+return"
   },
   "mcp": {
     "context7": {
