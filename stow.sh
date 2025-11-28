@@ -12,7 +12,7 @@ if [ "$1" = "dev" ]; then
   echo "Installing dev-only dotfiles..."
   
   # Dev-focused config packages
-  dev_config_packages=(nvim alacritty opencode)
+  dev_config_packages=(nvim alacritty opencode bat)
   
   for package in "${dev_config_packages[@]}"; do
     mkdir -p "$HOME/.config/$package"
@@ -36,7 +36,7 @@ fi
 
 # Full installation (default)
 # Config packages that need their own directory
-config_packages=(nvim alacritty hypr waybar wofi htop opencode)
+config_packages=(nvim alacritty hypr waybar wofi htop opencode bat)
 
 for package in "${config_packages[@]}"; do
   mkdir -p "$HOME/.config/$package"

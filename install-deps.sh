@@ -26,6 +26,10 @@ packages=(
   htop
   starship
   fastfetch
+  bat
+  fd
+  fzf
+  eza
 )
 
 # Install with pacman

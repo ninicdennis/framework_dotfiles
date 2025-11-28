@@ -22,6 +22,10 @@ packages=(
   alacritty
   starship
   fastfetch
+  bat
+  fd
+  fzf
+  eza
 )
 
 # Install with Homebrew

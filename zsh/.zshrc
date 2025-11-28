@@ -108,6 +108,16 @@ alias ff="fastfetch"
 alias networktui="nmtui"
 alias bluetoothtui="bluetui"
 
+# bat aliases
+alias cat="bat --paging=never --style=plain"
+alias ccat="bat --paging=never"
+
+# eza aliases
+alias ls="eza --icons --git"
+alias ll="eza --icons --git -l"
+alias la="eza --icons --git -la"
+alias tree="eza --icons --tree"
+
 # Location Aliases
 alias dots="cd ~/dotfiles"
 alias conf="cd ~/.config"
@@ -124,6 +134,16 @@ export HYPRSHOT_DIR="$HOME/Pictures/Screenshots"
 
 # Starship
 eval "$(starship init zsh)"
+
+# fzf key bindings and completion
+if command -v fzf &> /dev/null; then
+  eval "$(fzf --zsh)"
+fi
+
+# fzf configuration
+export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border"
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # pnpm
 export PNPM_HOME="/home/doggobot/.local/share/pnpm"
