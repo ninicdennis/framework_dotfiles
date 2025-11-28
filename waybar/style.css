@@ -258,3 +258,13 @@ label:focus {
 #custom-powerprofile.unknown {
   color: #e5c890;
 }
+
+/* Hyprland submap (resize mode) indicator */
+#submap {
+  background-color: @red;
+  color: @mantle;
+  font-weight: bold;
+  padding: 0 15px;
+  margin: 5px 5px;
+  animation: blink 1s ease-in-out infinite;
+}

@@ -13,7 +13,7 @@
     "memory"
   ],
   "modules-center": [
-    // "hyprland/window",
+    "hyprland/submap",
     "clock"
   ],
   "modules-right": [
@@ -54,7 +54,8 @@
     "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
   },
   "hyprland/submap": {
-    "format": "<span style=\"italic\">{}</span>"
+    "format": "✨ {} ✨",
+    "tooltip": false
   },
   "custom/powerprofile": {
     "exec": "~/.local/bin/powerprofile --print",
