@@ -104,8 +104,8 @@ print_json() {
   esac
 
   # One-line JSON (Waybar expects a single object per refresh)
-  printf '{"text":"%s %s","tooltip":"Power profile: %s","class":"%s"}\n' \
-    "$icon" "$label" "$label" "$cls"
+  printf '{"text":"%s","tooltip":"Power profile: %s","class":"%s"}\n' \
+    "$icon" "$label" "$cls"
 }
 
 # ---------- SET PROFILE ----------

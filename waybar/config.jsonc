@@ -7,21 +7,18 @@
   "spacing": 1,
   "modules-left": [
     "hyprland/workspaces",
-    "custom/powerprofile",
-    "battery",
-    "cpu",
-    "memory"
-  ],
-  "modules-center": [
     "hyprland/submap",
-    "clock"
+    "cpu",
+    "memory",
+    "disk#ssd"
   ],
+  "modules-center": ["clock"],
   "modules-right": [
-    "custom/kernel",
-    "disk#ssd",
     "network",
     "custom/tailscale",
-    "pulseaudio"
+    "pulseaudio",
+    "custom/powerprofile",
+    "battery"
   ],
   "hyprland/workspaces": {
     "format": "{id}",
@@ -40,6 +37,7 @@
     "format": "{capacity}% {icon}",
     "format-charging": " {icon} {capacity}% ",
     "format-icons": ["", "", "", "", ""],
+    "tooltip-format": "{capacity}%\nWattage: {power}W\n{timeTo}",
     "max-length": 25
   },
   "bluetooth": {

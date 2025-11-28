@@ -238,8 +238,11 @@ label:focus {
 
 /* Base */
 #custom-powerprofile {
-  padding: 0 8px;
-  border-radius: 8px;
+  background-color: @base;
+  color: @text;
+  padding: 0 5px;
+  margin: 5px 1px;
+  min-width: 37px;
 }
 
 /* Profile-specific classes set by script’s JSON */
