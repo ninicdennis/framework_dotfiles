@@ -8,7 +8,8 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="agnoster"
+# Using Starship prompt instead, so theme is disabled
+ZSH_THEME=""
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -108,6 +109,16 @@ alias ff="fastfetch"
 alias networktui="nmtui"
 alias bluetoothtui="bluetui"
 
+# Editor aliases
+alias vim="nvim"
+alias vi="nvim"
+
+# Git aliases
+alias lg="lazygit"
+
+# System aliases
+alias dmesg="dmesg --human --color"
+
 # bat aliases
 alias cat="bat --paging=never --style=plain"
 alias ccat="bat --paging=never"
@@ -128,6 +139,10 @@ alias yayup="yay -Syu"
 
 # Terminal
 export TERM="screen-256color"
+
+# Editor
+export EDITOR="nvim"
+export VISUAL="nvim"
 
 # Screenshots
 export HYPRSHOT_DIR="$HOME/Pictures/Screenshots"
