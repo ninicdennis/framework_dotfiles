@@ -17,13 +17,14 @@ packages=(
   ttf-jetbrains-mono-nerd
   wofi
   mako
-  hyprpaper
+  swww
   hypridle
   hyprlock
   hyprshot
   brightnessctl
   pulsemixer
   htop
+  btop
   starship
   fastfetch
   bat

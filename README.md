@@ -10,9 +10,9 @@ The following packages are required:
 
 - `git`, `stow`
 - `neovim`, `zsh`, `tmux`, `alacritty`
-- `hyprland`, `waybar`, `hyprpaper`, `hypridle`, `hyprlock`, `hyprshot`
+- `hyprland`, `waybar`, `swww`, `hypridle`, `hyprlock`, `hyprshot`
 - `wofi`, `mako`
-- `brightnessctl`, `foot`, `pulsemixer`, `htop`
+- `brightnessctl`, `pulsemixer`, `btop`, `bluetui`, `nmtui`
 - `ttf-jetbrains-mono-nerd`
 - `starship`, `fastfetch`
 - `oh-my-zsh` with plugins:
@@ -111,3 +111,40 @@ code --list-extensions > ~/.config/Code/User/extensions.txt
 - Running `./stow.sh dev` sets up only cross-platform developer tools (useful for macOS or minimal installs)
 
 If you want to undo the links created by GNU Stow, you can run `stow -D <package>` from the dotfiles directory, e.g. `stow -D nvim`.
+
+## Hyprland Keybindings
+
+### Wallpaper Management (swww)
+
+The wallpaper system uses `swww` for smooth transitions. Wallpapers are stored in `~/Wallpapers/`.
+
+- `SUPER + W` - Set random wallpaper
+- `SUPER + CTRL + Right` - Next wallpaper in directory
+- `SUPER + CTRL + Left` - Previous wallpaper in directory
+
+The wallpaper script can also be called manually:
+```bash
+~/.config/hypr/scripts/wallpaper.sh random
+~/.config/hypr/scripts/wallpaper.sh next
+~/.config/hypr/scripts/wallpaper.sh prev
+~/.config/hypr/scripts/wallpaper.sh set /path/to/wallpaper.jpg
+```
+
+### Other Keybindings
+
+- `SUPER + Q` - Close active window
+- `SUPER + M` - Exit Hyprland
+- `SUPER + E` - File manager
+- `SUPER + V` - Toggle floating
+- `SUPER + R` - Wofi launcher
+- `SUPER + P` - Power menu
+- `SUPER + T` - Screenshot (full screen)
+- `SUPER + SHIFT + T` - Screenshot (region)
+
+### Waybar Module Interactions
+
+Click on Waybar modules to open management interfaces in floating terminals:
+- **Network** - Opens `nmtui` (NetworkManager TUI)
+- **Bluetooth** - Opens `bluetui` (Bluetooth manager)
+- **Volume** - Opens `pulsemixer` (Audio mixer)
+- **CPU/Memory** - Opens `btop` (System monitor)
