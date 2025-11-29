@@ -134,6 +134,17 @@ The wallpaper script can also be called manually:
 
 Press `SUPER + SHIFT + K` to open an interactive keybind cheatsheet. This displays all your Hyprland keybindings in a searchable `fzf` menu, making it easy to discover and remember keybindings.
 
+### Zen Mode
+
+Press `SUPER + CTRL + Z` to toggle zen mode for distraction-free focus. Zen mode:
+- Hides Waybar
+- Removes window borders
+- Removes window gaps and rounding
+- Increases dimming on inactive windows
+- Enables Do Not Disturb (mutes notifications)
+
+Press the same keybind again to restore normal mode.
+
 ### Other Keybindings
 
 - `SUPER + Q` - Close active window
@@ -146,6 +157,7 @@ Press `SUPER + SHIFT + K` to open an interactive keybind cheatsheet. This displa
 - `SUPER + SHIFT + T` - Screenshot (region)
 - `SUPER + SHIFT + B` - Toggle Waybar visibility
 - `SUPER + SHIFT + K` - Show keybind cheatsheet
+- `SUPER + CTRL + Z` - Toggle zen mode
 
 ### Waybar Module Interactions
 
