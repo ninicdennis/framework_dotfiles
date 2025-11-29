@@ -130,6 +130,10 @@ The wallpaper script can also be called manually:
 ~/.config/hypr/scripts/wallpaper.sh set /path/to/wallpaper.jpg
 ```
 
+### Keybind Cheatsheet
+
+Press `SUPER + SHIFT + K` to open an interactive keybind cheatsheet. This displays all your Hyprland keybindings in a searchable `fzf` menu, making it easy to discover and remember keybindings.
+
 ### Other Keybindings
 
 - `SUPER + Q` - Close active window
@@ -140,6 +144,8 @@ The wallpaper script can also be called manually:
 - `SUPER + P` - Power menu
 - `SUPER + T` - Screenshot (full screen)
 - `SUPER + SHIFT + T` - Screenshot (region)
+- `SUPER + SHIFT + B` - Toggle Waybar visibility
+- `SUPER + SHIFT + K` - Show keybind cheatsheet
 
 ### Waybar Module Interactions
 
