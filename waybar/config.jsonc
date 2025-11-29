@@ -39,7 +39,7 @@
       "critical": 15
     },
     "format": "{capacity}% {icon}",
-    "format-charging": " {icon} {capacity}% ",
+    "format-charging": " {capacity}% {icon}",
     "format-icons": ["", "", "", "", ""],
     "tooltip-format": "{capacity}%\nWattage: {power}W\n{timeTo}",
     "max-length": 25
@@ -54,7 +54,7 @@
     "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
     "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
     "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
-    "on-click": "alacritty -e bluetui"
+    "on-click": "alacritty --class bluetui -e bluetui"
   },
   "hyprland/submap": {
     "format": "✨ {} ✨",
@@ -113,7 +113,7 @@
         "days": "<span color='#cdd6f4'><b>{}</b></span>",
         "weeks": "<span color='#94e2d5'>W{}</span>",
         "weekdays": "<span color='#f9e2af'><b>{}</b></span>",
-        "today": "<span color='#f5e0dc'><b><u>{}</u></b></span>"
+        "today": "<span color='#1e1e2e' background='#f38ba8'><b>{}</b></span>"
       }
     },
     "actions": {
@@ -132,12 +132,12 @@
   "cpu": {
     "interval": 3,
     "format": "{usage}% ",
-    "on-click": "foot --app-id htop htop"
+    "on-click": "alacritty --class btop -e btop"
   },
   "memory": {
     "interval": 3,
     "format": "{}% ",
-    "on-click": "foot --app-id htop htop",
+    "on-click": "alacritty --class btop -e btop",
     "tooltip-format": "Used: {used:0.1f}G/{total:0.1f}G. Swap: {swapUsed:0.1f}G/{swapTotal:0.1f}G",
     "states": {
       "critical": 80
@@ -162,7 +162,7 @@
     "tooltip-format-wifi": "{essid} | {ifname}: {ipaddr}/{cidr} ",
     "tooltip-format-disconnected": "Disconnected",
     "format-linked": "(No IP) ",
-    "on-click": "alacritty -e nmtui"
+    "on-click": "alacritty --class nmtui -e nmtui"
   },
   "custom/kernel": {
     "exec": "uname -r | sed -E 's/^([0-9]+\\.[0-9]+\\.[0-9]+)-.*-([a-zA-Z0-9]+)/\\1-\\2/'",
@@ -184,7 +184,7 @@
       "portable": "",
       "car": ""
     },
-    "on-click": "alacritty -e pulsemixer"
+    "on-click": "alacritty --class pulsemixer -e pulsemixer"
   },
   "custom/tailscale": {
     "exec": "tailscale status --json 2>/dev/null | jq -r 'if .BackendState == \"Running\" then \"󰛳\" else \"\" end'",
