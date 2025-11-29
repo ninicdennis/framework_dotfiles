@@ -10,11 +10,15 @@
     "hyprland/submap",
     "cpu",
     "memory",
-    "disk#ssd"
+    "disk#ssd",
+    "mpris"
   ],
-  "modules-center": ["clock"],
+  "modules-center": ["clock", "custom/weather"],
   "modules-right": [
+    "tray",
+    "idle_inhibitor",
     "network",
+    "bluetooth",
     "custom/tailscale",
     "pulseaudio",
     "custom/powerprofile",
@@ -41,15 +45,16 @@
     "max-length": 25
   },
   "bluetooth": {
-    "format-on": "bt ",
-    "format-off": "bt ({status}) ",
-    "format-connected": "{device_alias} ",
+    "format-on": "",
+    "format-off": "󰂲",
+    "format-connected": "󰂱",
     "format-connected-battery": "{device_alias} [{device_battery_percentage}%] ",
     "format-device-preference": ["ugreen_1", "ugreen_2"],
     "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
     "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
     "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-    "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
+    "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
+    "on-click": "alacritty -e bluetui"
   },
   "hyprland/submap": {
     "format": "✨ {} ✨",
@@ -74,6 +79,7 @@
       "default": "▶",
       "firefox": "▶",
       "tidal-hifi": "🎵",
+      "spotify": "🎵",
       "cmus": "🎵"
     },
     "status-icons": {
@@ -118,6 +124,11 @@
       "on-scroll-down": "shift_down"
     }
   },
+  "custom/weather": {
+    "exec": "curl -s 'wttr.in/?format=%c+%t&u'",
+    "interval": 3600,
+    "format": "{}"
+  },
   "cpu": {
     "interval": 3,
     "format": "{usage}% ",
@@ -144,12 +155,14 @@
     "interval": 60,
     "interface-ethernet": "enp1s*",
     "interface-wifi": "wlan0",
-    "format-ethernet": "eth ",
-    "format-wifi": "{essid} ",
-    "tooltip-format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
-    "tooltip-format-wifi": "{ifname}: {ipaddr}/{cidr} ",
-    "format-linked": "(No IP) ",
-    "format-disconnected": "Disconnected ⚠"
+    "format-ethernet": "eth 󰈀",
+    "format-wifi": "",
+    "format-disconnected": "󰤭 ",
+    "tooltip-format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
+    "tooltip-format-wifi": "{essid} | {ifname}: {ipaddr}/{cidr} ",
+    "tooltip-format-disconnected": "Disconnected",
+    "format-linked": "(No IP) ",
+    "on-click": "alacritty -e nmtui"
   },
   "custom/kernel": {
     "exec": "uname -r | sed -E 's/^([0-9]+\\.[0-9]+\\.[0-9]+)-.*-([a-zA-Z0-9]+)/\\1-\\2/'",
@@ -171,7 +184,7 @@
       "portable": "",
       "car": ""
     },
-    "on-click": "foot --app-id pulsemixer pulsemixer"
+    "on-click": "alacritty -e pulsemixer"
   },
   "custom/tailscale": {
     "exec": "tailscale status --json 2>/dev/null | jq -r 'if .BackendState == \"Running\" then \"󰛳\" else \"\" end'",
