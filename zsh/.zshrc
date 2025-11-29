@@ -71,7 +71,7 @@ ZSH_THEME=""
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting you-should-use sudo z history-substring-search command-not-found)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting you-should-use sudo history-substring-search command-not-found colored-man-pages extract docker)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -137,6 +137,32 @@ alias conf="cd ~/.config"
 alias pacup="sudo pacman -Syu"
 alias yayup="yay -Syu"
 
+# Docker aliases
+alias dps="docker ps"
+alias dimg="docker images"
+alias dexec="docker exec -it"
+alias dlog="docker logs -f"
+alias lzd="lazydocker"
+
+# Git enhancements
+alias gst="git status"
+alias gd="git diff"
+alias gds="git diff --staged"
+alias gcm="git commit -m"
+alias gp="git push"
+alias gl="git pull"
+
+# Quick edits
+alias zshrc="$EDITOR ~/.zshrc"
+alias nvimrc="$EDITOR ~/.config/nvim/init.lua"
+alias tmuxrc="$EDITOR ~/.tmux.conf"
+
+# System monitoring
+alias ports="netstat -tulanp"
+
+# fzf-powered git helpers
+alias fzp='git log --oneline | fzf --preview "git show --color=always {1}"'
+
 # Terminal
 export TERM="screen-256color"
 
@@ -150,14 +176,27 @@ export HYPRSHOT_DIR="$HOME/Pictures/Screenshots"
 # Starship
 eval "$(starship init zsh)"
 
+# zoxide - smarter cd command
+eval "$(zoxide init zsh)"
+
 # fzf key bindings and completion
 if command -v fzf &> /dev/null; then
   eval "$(fzf --zsh)"
 fi
 
 # fzf configuration
-export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border"
-export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+export FZF_DEFAULT_OPTS="
+  --height 40% 
+  --layout=reverse 
+  --border
+  --preview 'bat --color=always --style=numbers --line-range=:500 {}'
+  --preview-window=right:50%:wrap
+  --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8
+  --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc
+  --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
+
+# Use ripgrep for better performance
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # pnpm

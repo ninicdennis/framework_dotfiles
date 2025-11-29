@@ -1,0 +1,17 @@
+# Follow symlinks
+--follow
+
+# Case insensitive if all lowercase
+--smart-case
+
+# Show context around matches
+--context=2
+
+# Exclude directories
+--glob=!.git/*
+--glob=!node_modules/*
+--glob=!target/*
+--glob=!dist/*
+--glob=!build/*
+--glob=!.next/*
+--glob=!coverage/*

@@ -26,6 +26,14 @@ packages=(
   fd
   fzf
   eza
+  ripgrep
+  zoxide
+  lazydocker
+  jq
+  yq
+  procs
+  dust
+  duf
 )
 
 # Install with Homebrew
