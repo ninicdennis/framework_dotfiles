@@ -1,7 +1,7 @@
 {
   "output": "eDP-1",
   "layer": "top",
-  "position": "bottom",
+  "position": "top",
   "height": 30,
   "width": 1440,
   "spacing": 1,
@@ -25,7 +25,14 @@
     "battery"
   ],
   "hyprland/workspaces": {
-    "format": "{id}",
+    "format": "{icon}",
+    "format-icons": {
+      "1": "",
+      "2": "󰖟",
+      "3": "",
+      "4": "󰎆",
+      "5": ""
+    },
     "active-only": false, // show inactive too
     "all-outputs": true, // same slots on every monitor
     "persistent-workspaces": {
@@ -75,12 +82,11 @@
     "format": "{player_icon} {dynamic}",
     "format-paused": "{status_icon} <i>{dynamic}</i>",
     "dynamic-order": ["artist", "title"],
+    "dynamic-len": 30,
     "player-icons": {
       "default": "▶",
       "firefox": "▶",
-      "tidal-hifi": "🎵",
-      "spotify": "🎵",
-      "cmus": "🎵"
+      "spotify": "󰓇"
     },
     "status-icons": {
       "paused": "⏸"
@@ -145,9 +151,10 @@
   },
   "disk#ssd": {
     "interval": 60,
-    "format": "{used} / {free} ",
+    "format": "{percentage_used}% ",
     "path": "/",
     "tooltip": true,
+    "tooltip-format": "Used: {used} / Total: {total}",
     "warning": 80,
     "critical": 90
   },
@@ -163,10 +170,6 @@
     "tooltip-format-disconnected": "Disconnected",
     "format-linked": "(No IP) ",
     "on-click": "alacritty --class nmtui -e nmtui"
-  },
-  "custom/kernel": {
-    "exec": "uname -r | sed -E 's/^([0-9]+\\.[0-9]+\\.[0-9]+)-.*-([a-zA-Z0-9]+)/\\1-\\2/'",
-    "format": "{} "
   },
   "pulseaudio": {
     "scroll-step": 2,

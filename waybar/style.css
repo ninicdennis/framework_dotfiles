@@ -39,7 +39,7 @@ button:hover {
 }
 
 #workspaces button {
-  padding: 0 0;
+  padding: 0 3px;
   background-color: @mantle;
   color: @text;
 }
@@ -137,7 +137,6 @@ label:focus {
 #cpu {
   background-color: transparent;
   color: @mauve;
-  min-width: 45px;
 }
 
 #memory {
@@ -154,7 +153,7 @@ label:focus {
   background-color: transparent;
   color: @peach;
   padding: 0 5px;
-  min-width: 20px;
+  min-width: 15px;
 }
 
 #network.disconnected {
@@ -166,14 +165,14 @@ label:focus {
   background-color: transparent;
   color: @sky;
   padding: 0 5px;
-  min-width: 20px;
+  min-width: 10px;
 }
 
 #bluetooth {
   background-color: transparent;
   color: @maroon;
   padding: 0 5px;
-  min-width: 20px;
+  min-width: 15px;
 }
 
 #pulseaudio {
@@ -229,7 +228,6 @@ label:focus {
   background-color: transparent;
   color: @text;
   padding: 0 5px;
-  min-width: 20px;
 }
 
 #idle_inhibitor.activated {
@@ -252,7 +250,6 @@ label:focus {
   color: @text;
   padding: 0 2px;
   margin: 5px 1px;
-  min-width: 20px;
 }
 
 /* Profile-specific classes set by script’s JSON */
