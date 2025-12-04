@@ -39,7 +39,7 @@ button:hover {
 }
 
 #workspaces button {
-  padding: 0 3px;
+  padding: 0 6px 0 3px;
   background-color: @mantle;
   color: @text;
 }
@@ -137,11 +137,23 @@ label:focus {
 #cpu {
   background-color: transparent;
   color: @mauve;
+  transition: all 0.3s ease;
+}
+
+#cpu:hover {
+  background-color: @surface0;
+  color: @lavender;
 }
 
 #memory {
   background-color: transparent;
   color: @red;
+  transition: all 0.3s ease;
+}
+
+#memory:hover {
+  background-color: @surface0;
+  color: @maroon;
 }
 
 #disk {
@@ -152,8 +164,14 @@ label:focus {
 #network {
   background-color: transparent;
   color: @peach;
-  padding: 0 5px;
+  padding: 0 10px 0 5px;
   min-width: 15px;
+  transition: all 0.3s ease;
+}
+
+#network:hover {
+  background-color: @surface0;
+  color: @rosewater;
 }
 
 #network.disconnected {
@@ -166,6 +184,12 @@ label:focus {
   color: @sky;
   padding: 0 5px;
   min-width: 10px;
+  transition: all 0.3s ease;
+}
+
+#custom-tailscale:hover {
+  background-color: @surface0;
+  color: @sapphire;
 }
 
 #bluetooth {
@@ -173,16 +197,33 @@ label:focus {
   color: @maroon;
   padding: 0 5px;
   min-width: 15px;
+  transition: all 0.3s ease;
+}
+
+#bluetooth:hover {
+  background-color: @surface0;
+  color: @pink;
 }
 
 #pulseaudio {
   background-color: transparent;
   color: @yellow;
+  transition: all 0.3s ease;
+}
+
+#pulseaudio:hover {
+  background-color: @surface0;
+  color: @peach;
 }
 
 #pulseaudio.muted {
   background-color: transparent;
   color: red;
+}
+
+#pulseaudio.muted:hover {
+  background-color: @surface0;
+  color: @maroon;
 }
 
 #temperature {
@@ -227,12 +268,23 @@ label:focus {
 #idle_inhibitor {
   background-color: transparent;
   color: @text;
-  padding: 0 5px;
+  padding: 0 10px 0 5px;
+  transition: all 0.3s ease;
+}
+
+#idle_inhibitor:hover {
+  background-color: @surface0;
+  color: @lavender;
 }
 
 #idle_inhibitor.activated {
   background-color: transparent;
   color: @yellow;
+}
+
+#idle_inhibitor.activated:hover {
+  background-color: @surface0;
+  color: @peach;
 }
 
 #scratchpad {
@@ -248,8 +300,47 @@ label:focus {
 #custom-powerprofile {
   background-color: transparent;
   color: @text;
-  padding: 0 2px;
+  padding: 0 4px 0 2px;
   margin: 5px 1px;
+  min-width: 20px;
+  transition: all 0.3s ease;
+}
+
+#custom-powerprofile:hover {
+  background-color: @surface0;
+}
+
+/* Profile-specific classes set by script's JSON */
+#custom-powerprofile.performance {
+  color: #e78284; /* red-ish */
+}
+
+#custom-powerprofile.performance:hover {
+  color: #f38ba8;
+}
+
+#custom-powerprofile.balanced {
+  color: #8caaee; /* blue-ish */
+}
+
+#custom-powerprofile.balanced:hover {
+  color: #89b4fa;
+}
+
+#custom-powerprofile.power-saver {
+  color: #a6d189; /* green-ish */
+}
+
+#custom-powerprofile.power-saver:hover {
+  color: #a6e3a1;
+}
+
+#custom-powerprofile.unknown {
+  color: #e5c890;
+}
+
+#custom-powerprofile.unknown:hover {
+  color: #f9e2af;
 }
 
 /* Profile-specific classes set by script’s JSON */
