@@ -11,20 +11,28 @@ ensure_daemon() {
     fi
 }
 
-# Get current wallpaper
+# Get list of connected monitor names
+get_monitors() {
+    swww query | grep -oP '^\s*:\s*\K\w+-\d+'
+}
+
+# Get current wallpaper (from first monitor)
 get_current() {
     ensure_daemon
     swww query | grep -oP 'image: \K.*' | head -1
 }
 
-# Set a specific wallpaper
+# Set a wallpaper on all connected monitors
 set_wallpaper() {
     local wallpaper="$1"
     ensure_daemon
-    swww img "$wallpaper" \
-        --transition-type wipe \
-        --transition-duration 2 \
-        --transition-fps 60
+    for monitor in $(get_monitors); do
+        swww img "$wallpaper" \
+            --outputs "$monitor" \
+            --transition-type wipe \
+            --transition-duration 2 \
+            --transition-fps 60
+    done
 }
 
 # Get a random wallpaper
@@ -36,7 +44,7 @@ random_wallpaper() {
 next_wallpaper() {
     local current=$(get_current)
     local wallpapers=($(find "$WALLPAPER_DIR" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.webp" \) | sort))
-    
+
     for i in "${!wallpapers[@]}"; do
         if [[ "${wallpapers[$i]}" == "$current" ]]; then
             local next_idx=$(( (i + 1) % ${#wallpapers[@]} ))
@@ -44,8 +52,7 @@ next_wallpaper() {
             return
         fi
     done
-    
-    # If current not found, return first
+
     echo "${wallpapers[0]}"
 }
 
@@ -53,7 +60,7 @@ next_wallpaper() {
 prev_wallpaper() {
     local current=$(get_current)
     local wallpapers=($(find "$WALLPAPER_DIR" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.webp" \) | sort))
-    
+
     for i in "${!wallpapers[@]}"; do
         if [[ "${wallpapers[$i]}" == "$current" ]]; then
             local prev_idx=$(( (i - 1 + ${#wallpapers[@]}) % ${#wallpapers[@]} ))
@@ -61,8 +68,7 @@ prev_wallpaper() {
             return
         fi
     done
-    
-    # If current not found, return last
+
     echo "${wallpapers[-1]}"
 }
 

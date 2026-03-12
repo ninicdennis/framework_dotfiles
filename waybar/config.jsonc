@@ -1,9 +1,8 @@
 {
-  "output": "eDP-1",
+  "output": ["eDP-1", "DP-2", "DP-3"],
   "layer": "top",
   "position": "top",
   "height": 30,
-  "width": 1440,
   "spacing": 1,
   "modules-left": [
     "hyprland/workspaces",
@@ -25,14 +24,13 @@
     "battery"
   ],
   "hyprland/workspaces": {
-    "format": "{icon}",
-    "format-icons": {
-      "1": "",
-      "2": "󰖟",
-      "3": "",
-      "4": "󰎆",
-      "5": ""
-    },
+    "format": "{name}",
+    "active-only": false, // show inactive too
+    "all-outputs": true, // same slots on every monitor
+    "persistent-workspaces": {
+      "*": [1, 2, 3, 4, 5] // reserve workspaces 1–5 everywhere
+    }
+  },
     "active-only": false, // show inactive too
     "all-outputs": true, // same slots on every monitor
     "persistent-workspaces": {

@@ -1,5 +1,5 @@
 {
-  "window.zoomLevel": 3,
+  "window.zoomLevel": 1,
   "github.copilot.nextEditSuggestions.enabled": true,
   "workbench.colorTheme": "Catppuccin Mocha",
   "workbench.iconTheme": "catppuccin-mocha",
@@ -15,18 +15,18 @@
   "chat.tools.terminal.autoApprove": {
     "pnpm test:coverage": {
       "approve": true,
-      "matchCommandLine": true
+      "matchCommandLine": true,
     },
     "pnpm test": {
       "approve": true,
-      "matchCommandLine": true
+      "matchCommandLine": true,
     },
     "npm test": true,
     "pnpm": true,
     "npx": true,
-    "docker compose": true
+    "docker compose": true,
   },
   "chat.agent.maxRequests": 50,
   "workbench.settings.applyToAllProfiles": [],
-  "chat.mcp.gallery.enabled": true
+  "chat.mcp.gallery.enabled": true,
 }
