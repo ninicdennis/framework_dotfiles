@@ -1,0 +1,11 @@
+{
+  "$schema": "https://opencode.ai/tui.json",
+  "scroll_speed": 3,
+  "scroll_acceleration": {
+    "enabled": true,
+  },
+  "keybinds": {
+    "command_list": "ctrl+alt+p",
+    "input_newline": "alt+return",
+  },
+}
