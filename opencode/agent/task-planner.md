@@ -37,6 +37,7 @@ description: >-
   </example>
 
 mode: primary
+steps: 20
 permission:
   edit: deny
   bash: deny
