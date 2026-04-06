@@ -13,7 +13,9 @@ permission:
     "git status": allow
     "git diff *": allow
     "git diff": allow
+    "git diff --cached *": allow
     "git add *": allow
+    "git restore --staged *": allow
     "git log *": allow
 ---
 

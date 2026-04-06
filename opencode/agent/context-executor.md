@@ -36,7 +36,69 @@ mode: primary
 model: openrouter/minimax/minimax-m2.7
 permission:
   edit: allow
-  bash: ask
+  bash:
+    # Default: ask for anything not matched below
+    "*": ask
+    # Destructive — always denied
+    "rm -rf *": deny
+    "git push *": deny
+    "git commit *": deny
+    "sudo *": deny
+    "dd *": deny
+    "mkfs *": deny
+    "shutdown *": deny
+    "reboot *": deny
+    ":(){ :|:& };:": deny
+    # Potentially harmful — ask first
+    "rm *": ask
+    "mv *": ask
+    "cp *": ask
+    "chmod *": ask
+    "chown *": ask
+    "ssh *": ask
+    "docker *": ask
+    "kill *": ask
+    "pkill *": ask
+    "systemctl *": ask
+    "service *": ask
+    # Safe read & inspect
+    "ls *": allow
+    "ls": allow
+    "cat *": allow
+    "pwd": allow
+    "echo *": allow
+    "head *": allow
+    "tail *": allow
+    "wc *": allow
+    "find *": allow
+    "grep *": allow
+    "rg *": allow
+    "which *": allow
+    "env": allow
+    "printenv *": allow
+    # Network — safe local use
+    "curl *": allow
+    "wget *": allow
+    # Git read-only
+    "git status": allow
+    "git diff *": allow
+    "git diff": allow
+    "git log *": allow
+    "git show *": allow
+    # Build & test runners
+    "pnpm *": allow
+    "npm run *": allow
+    "npx *": allow
+    "yarn *": allow
+    "bun *": allow
+    "node *": allow
+    "python *": allow
+    "python3 *": allow
+    "cargo *": allow
+    "go *": allow
+    "make *": allow
+    "just *": allow
+    "tsc *": allow
 ---
 
 You are an expert implementation agent specializing in precise, context-aware task execution. Your core strength is reading and understanding prior conversation context to extract structured task breakdowns and execute them faithfully, efficiently, and correctly.
@@ -105,3 +167,15 @@ A concise summary of all completed work, notes, and suggested next steps.
 - Ensure code changes are syntactically correct and consistent with the surrounding codebase
 - Verify that no previously working functionality has been inadvertently broken
 - Confirm that all tasks in the breakdown have been addressed before declaring completion
+
+## Documentation Lookup
+
+When implementing with unfamiliar libraries, frameworks, or APIs, use the **Context7 MCP server** to look up official documentation and usage examples before writing code. This ensures you use APIs correctly and follow current best practices.
+
+Add `use context7` to your prompt when invoking it — for example:
+
+```
+use context7 to look up the React useTransition hook usage
+```
+
+Do this proactively when you encounter something you haven't used before — do not guess at API signatures or option names.
