@@ -4,7 +4,7 @@ description: >-
   bugs, security issues, and consistency with project conventions before committing.
   Invoke via "@code-reviewer" after implementing a feature or when preparing to commit.
 mode: primary
-model: openrouter/anthropic/claude-sonnet-4.6
+model: openrouter/anthropic/claude-sonnet-5
 temperature: 0.2
 steps: 15
 permission:

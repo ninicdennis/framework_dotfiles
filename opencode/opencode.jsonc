@@ -127,7 +127,7 @@
     },
     "plan": {
       "mode": "primary",
-      "model": "openrouter/anthropic/claude-sonnet-4.6",
+      "model": "openrouter/anthropic/claude-opus-4.8",
       "permission": {
         "edit": "ask",
         "bash": "ask",
@@ -135,7 +135,7 @@
     },
     "project-researcher": {
       "mode": "primary",
-      "model": "openrouter/anthropic/claude-sonnet-4.6",
+      "model": "openrouter/anthropic/claude-opus-4.8",
     },
     "research-worker": {
       "mode": "subagent",

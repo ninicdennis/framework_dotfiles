@@ -25,7 +25,7 @@ description: >-
   </example>
 
 mode: primary
-model: openrouter/anthropic/claude-sonnet-4.6
+model: openrouter/anthropic/claude-opus-4.8
 steps: 30
 permission:
   edit: deny

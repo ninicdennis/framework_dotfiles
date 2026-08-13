@@ -29,4 +29,16 @@
   "chat.agent.maxRequests": 50,
   "workbench.settings.applyToAllProfiles": [],
   "chat.mcp.gallery.enabled": true,
+  "chat.disableAIFeatures": true,
+  "terminal.integrated.shellIntegration.enabled": false,
+  "terminal.integrated.commandsToSkipShell": [],
+  "terminal.integrated.localEchoEnabled": false,
+  "editor.lineNumbers": "relative",
+  "[go]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "golang.go",
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit",
+    },
+  },
 }
