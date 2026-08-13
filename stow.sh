@@ -29,7 +29,11 @@ if [ "$1" = "dev" ]; then
   # VS Code configuration
   mkdir -p "$HOME/.config/Code"
   stow --target="$HOME/.config/Code" vscode
-  
+
+  # pi coding agent (~/.pi) — no-folding keeps auth.json/sessions out of the repo
+  mkdir -p "$HOME/.pi"
+  stow --no-folding --target="$HOME/.pi" pi
+
   echo "Dev dotfiles have been stowed successfully."
   exit 0
 fi
@@ -55,6 +59,10 @@ stow  --target="$HOME/.local" local
 # VS Code configuration - this one has a specific name
 mkdir -p "$HOME/.config/Code"
 stow --target="$HOME/.config/Code" vscode
+
+# pi coding agent (~/.pi) — no-folding keeps auth.json/sessions out of the repo
+mkdir -p "$HOME/.pi"
+stow --no-folding --target="$HOME/.pi" pi
 
 
 echo "All dotfiles have been stowed successfully."

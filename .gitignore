@@ -1,0 +1,4 @@
+# pi runtime state (excluded via stow --no-folding, ignored here as a safety net)
+pi/agent/auth.json
+pi/agent/sessions/
+pi/agent/models-store.json

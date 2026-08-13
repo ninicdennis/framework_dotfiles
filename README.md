@@ -103,6 +103,12 @@ To update the extensions list after installing new extensions:
 code --list-extensions > ~/.config/Code/User/extensions.txt
 ```
 
+## pi (coding agent) Configuration
+
+The `pi/` package manages `~/.pi/agent`: global coding standards (`AGENTS.md`), subagent definitions (`agents/`), prompt templates (`prompts/`), and extensions (`extensions/` — permission gate, cost tracker, git snapshots).
+
+It is stowed with `--no-folding` into `~/.pi` so that runtime state (`auth.json`, `sessions/`, `models-store.json`) stays local and is never committed. If you ever stow it manually, use: `stow --no-folding --target="$HOME/.pi" pi`.
+
 ## What does `stow.sh` do?
 
 `stow.sh` calls GNU Stow for each subdirectory in this repository. It also ensures that each target directory (e.g. `~/.config/nvim`) exists before stowing. 
